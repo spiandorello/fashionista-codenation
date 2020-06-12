@@ -1,0 +1,39 @@
+.topbar {
+
+  top: 0;
+  position: fixed;
+  background-color: #fefefe;
+  width: 100%;
+
+  .container {
+    padding: 1.5rem;
+  }
+
+  &__center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-logo {
+      height: 24px;
+      width: 160px;
+    }
+  }
+
+  &__right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    &-icon {
+      &-bag {
+        margin-right: 1.5rem;
+      }
+    }
+  }
+
+  .grid-x {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
