@@ -1,13 +1,15 @@
 import App from './App/App';
 import Home from './Home/Home';
 import TopBar from './Topbar/Topbar';
-import Catalogs from './Catalogs/Catalogs';
-import CatalogItem from './Catalogs/CatalogItem';
+import Products from './Products/Products';
+import ProductItem from './Products/ProductItem';
+import Product from './Product/Product';
 
 export {
   App,
   Home,
   TopBar,
-  Catalogs,
-  CatalogItem
+  Products,
+  ProductItem,
+  Product
 };

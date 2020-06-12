@@ -1,0 +1,17 @@
+.product {
+
+  padding-top: 5.5rem;
+
+  .grid-x {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &--preview {
+
+  }
+
+  &--info {
+
+  }
+}

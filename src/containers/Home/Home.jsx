@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { TopBar, Catalogs } from '../index';
+import { TopBar, Products } from '../index';
 
 const Home = ({ products }) => {
   return (
-    <div>
+    <>
       <TopBar />
-      <Catalogs catalogs={products} />
-    </div>
+      <Products products={products} />
+    </>
   );
 };
 

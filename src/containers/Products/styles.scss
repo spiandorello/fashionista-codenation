@@ -1,4 +1,4 @@
-.catalogs {
+.products {
   display: flex;
   justify-content: center;
   padding-top: 5.5rem;
@@ -29,12 +29,14 @@
   }
 
   &__item {
+
     &__link {
       width: 100%;
       text-decoration: none;
     }
 
     &__figure {
+      position: relative;
       img {
         width: 100%;
       }
@@ -55,7 +57,31 @@
 
       &-price {
         line-height: 1.5;
+
+        .old {
+          margin-right: 0.5rem;
+          color: gray;
+          text-decoration: line-through;
+        }
       }
     }
+  }
+}
+
+.promotion {
+  position: absolute;
+  bottom: 10px;
+  left: -8px;
+  padding: 0.5rem;
+
+  &__label {
+    color: #fff;
+    display: inline-block;
+    float: left;
+    font-size: 16px;
+    height: 100%;
+    padding: 3px 10px;
+    font-family: Oswald,Helvetica Neue,Helvetica,Arial,sans-serif;
+    background-color: #373534;
   }
 }
