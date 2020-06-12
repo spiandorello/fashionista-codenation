@@ -1,9 +1,12 @@
 import React from 'react';
 
-const Home = () => {
+import { TopBar, Catalogs } from '../index';
+
+const Home = ({ products }) => {
   return (
     <div>
-      Ma oiii
+      <TopBar />
+      <Catalogs catalogs={products} />
     </div>
   );
 };
