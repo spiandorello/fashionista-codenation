@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import { ShoppingBag, Search } from 'react-feather';
 
 import './_styles.scss';
+import SidebarSearch from "../../components/sidebar-search/sidebar-search";
 
-const TopBar = () => {
+const TopBar = ({ products }) => {
   return (
     <header className="topbar">
       <div className="grid-x container">
@@ -14,9 +15,7 @@ const TopBar = () => {
           <img className="topbar__center-logo" src="//cdn.shopify.com/s/files/1/2722/8634/t/43/assets/main-logo2.svg?v=4768978662345202764" alt="Lavish Alice" />
         </Link>
         <div className="cell topbar__icons">
-          <button className="topbar__icons--search" onClick={() => {}}>
-            <Search size={22} />
-          </button>
+          <SidebarSearch data={products} />
           <button className="topbar__icons--cart" onClick={() => {}}>
             <ShoppingBag size={22} />
           </button>

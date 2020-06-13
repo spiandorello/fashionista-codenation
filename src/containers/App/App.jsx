@@ -7,15 +7,12 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { store, persistor } from '../../store';
 
 import Routes from '../../routes';
-import MainLayout from '../../components/layout/main-layout';
 
 const App = () => (
   <Provider store={store}>
     <PersistGate persistor={persistor}>
       <Router>
-        <MainLayout
-          routes={<Routes />}
-        />
+        <Routes />
       </Router>
     </PersistGate>
   </Provider>
