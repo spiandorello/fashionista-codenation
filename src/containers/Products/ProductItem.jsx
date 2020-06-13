@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './styles.scss';
+import {slugify} from "../../modules/helpers";
 
 const Promotion  = ({ value }) => {
   return (
@@ -12,12 +13,14 @@ const Promotion  = ({ value }) => {
 };
 
 const ProductItem = ({ product }) => {
-  const { image, name, regular_price, id } = product;
-  console.log(product)
+  const { image, name, regular_price } = product;
   return (
     <div className="products__item">
       <Link
-        to={`/product/${id}`}
+        to={{
+          pathname: `/product/${slugify(name)}`,
+          state: { ...product }
+        }}
         className="products__item__link"
       >
         <figure className="products__item__figure">

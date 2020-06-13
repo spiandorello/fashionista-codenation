@@ -25,15 +25,20 @@
     }
   }
 
-  &__right {
+  &__icons {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 
-    &-icon {
-      &-bag {
-        margin-right: 1.5rem;
-      }
+    &--search {
+      margin-top: 2px;
+      margin-right: 1rem;
+      cursor: pointer;
+    }
+
+    &--cart {
+      margin-top: 2px;
+      cursor: pointer;
     }
   }
 

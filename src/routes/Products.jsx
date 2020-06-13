@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-import { Home } from '../containers';
+import { Products } from '../containers';
 
 import { request } from '../modules/request';
 import { endpoints } from '../modules/endpoints';
 
 const { getCatalog } = endpoints;
 
-const HomeRoute = () => {
+const ProductsRoute = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   
@@ -23,7 +23,7 @@ const HomeRoute = () => {
     return null;
   }
   
-  return <Home products={products} />
+  return <Products products={products} />
 };
 
-export default HomeRoute;
+export default ProductsRoute;

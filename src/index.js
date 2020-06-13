@@ -9,7 +9,7 @@ import './styles/globalStyles.scss'
 
 ReactDOM.render(
   <App />,
-  document.getElementById('app')
+  document.getElementById('root')
 );
 
 serviceWorker.unregister();

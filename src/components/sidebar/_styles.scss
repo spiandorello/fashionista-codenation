@@ -1,0 +1,13 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  height: 100vh;
+  width: 420px;
+  background-color: #fefefe;
+  z-index: 100;
+
+  &--is-visible {
+    right: 0;
+  }
+}
