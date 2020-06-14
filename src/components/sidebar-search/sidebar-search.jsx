@@ -42,14 +42,12 @@ const SidebarSearch = (props) => {
   return (
     <Sidebar
       icon={<Search size={22} />}
+      headerIcon={<ArrowLeft  />}
+      title="Buscar produtos"
       content={
         <div className="searchbar">
-          <div className="searchbar__header">
-            <ArrowLeft className="searchbar__header__icon" />
-            <h2 className="searchbar__header__title">Buscar produtos</h2>
-          </div>
           <div className="searchbar__content">
-            <input className="searchbar__input" type="text" value={search} onChange={e => setSearch(e.target.value)} />
+            <input placeholder="Buscar produtos" className="searchbar__input" type="text" value={search} onChange={e => setSearch(e.target.value)} />
           </div>
           <div className="searchbar__list">
             {!_s.isBlank(search) && data.map((item, key) => (

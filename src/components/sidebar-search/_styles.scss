@@ -3,21 +3,6 @@
   display: flex;
   flex-direction: column;
 
-  &__header {
-    padding: 1rem;
-    display: flex;
-    background-color: #fefefe;
-    align-items: center;
-
-    &__icon {
-
-    }
-
-    &__title {
-      margin: 0 auto;
-    }
-  }
-
   &__content {
     display: flex;
     padding: 1rem;
@@ -37,7 +22,7 @@
   }
 
   &__list {
-    padding: 0 1rem;
+    padding: 0 1rem 5rem 1rem;
     overflow: scroll;
 
     &__item {

@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'underscore';
 import { useSelector, useDispatch } from 'react-redux';
-import { Plus, Minus } from 'react-feather'
+import {Plus, Minus } from 'react-feather'
 
 import { ArrowLeft, ShoppingBag } from 'react-feather';
 
@@ -71,7 +71,7 @@ const ProductItem = ({ product }) => {
           </div>
         </div>
         <div className="cart__list__pricing">
-          <div className="cart__list__current">{product.regular_price}</div>
+          <div className="cart__list__current">{product.actual_price}</div>
           {product.installments && <div className="cart__list__installments">{product.installments}</div>}
         </div>
       </div>
@@ -84,20 +84,18 @@ const SidebarCart = () => {
   
   return (
     <Sidebar
+      headerIcon={<ArrowLeft  />}
+      title="Sacola"
       icon={<ShoppingBag size={22} />}
       content={
         <div className="cart">
-          <div className="cart__header">
-            <ArrowLeft className="cart__header__icon" />
-            <h2 className="cart__header__title">Meu carrinho</h2>
-          </div>
           <div className="cart__list">
             {Object.values(cart.products).map((item, key) => (
               <ProductItem key={key} product={item}/>
             ))}
           </div>
           <div className="cart__footer">
-            {getTotalPrice(Object.values(cart.products))}
+            Subtotal: R$ {getTotalPrice(Object.values(cart.products))}
           </div>
         </div>
       }

@@ -1,5 +1,5 @@
-import React, {useEffect, useState, useMemo} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, {useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
 import { addCartItem } from '../../actions/cart-actions';
@@ -15,12 +15,11 @@ const Product = () => {
   
   useEffect(() => {
     setProduct({...location.state});
-  }, []);
+  }, [location.state]);
   
   const handleAddCart = () => {
     
     if (Object.keys(size).length === 0) {
-      console.log('error cart empty');
       return;
     }
     
@@ -36,7 +35,7 @@ const Product = () => {
         <div className="grid-x container">
           <div className="product__images">
             <figure className="product__figure">
-              <img src={product.image} alt={product.name} />
+              <img src={product.image || 'https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indisponível'} alt={product.name} />
             </figure>
           </div>
           <div className="product__content">
@@ -61,20 +60,23 @@ const Product = () => {
               <p className="product__sizes__title">Escolha o tamanho:</p>
               <div className="product__sizes__buttons">
                 {product.sizes && product.sizes.map((item, key) => {
-                  if (item.available) {
-                    return <button
-                      key={key}
-                      className={`product__sizes__button ${item.sku === size.sku ? 'product__sizes__button--is-selected' : ''}`}
-                      onClick={() => {
-                        setSize({
-                          sku: item.sku,
-                          size: item.size
-                        });
-                      }}
-                    >
-                      {item.size}
-                    </button>
+                  
+                  if (!item.available) {
+                    return <></>;
                   }
+  
+                  return <button
+                    key={key}
+                    className={`product__sizes__button ${item.sku === size.sku ? 'product__sizes__button--is-selected' : ''}`}
+                    onClick={() => {
+                      setSize({
+                        sku: item.sku,
+                        size: item.size
+                      });
+                    }}
+                  >
+                    {item.size}
+                  </button>
                 })}
               </div>
             </div>
