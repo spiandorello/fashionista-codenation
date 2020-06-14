@@ -1,60 +1,103 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import _ from 'underscore';
+import { useSelector, useDispatch } from 'react-redux';
+import { Plus, Minus } from 'react-feather'
 
-import _s from 'underscore.string';
-import { Link } from 'react-router-dom';
 import { ArrowLeft, ShoppingBag } from 'react-feather';
 
 import Sidebar from '../sidebar/sidebar';
 
+import {addCartItem, removeAllCartItem, removeCartItem} from "../../actions/cart-actions";
+
 import './_styles.scss';
 
-const ProductItem = ({ product }) => (
-  <Link
-    className="cartbar__list__item"
-    to={{
-      pathname: `/product/${_s.slugify(product.name)}`,
-      state: {...product}
-    }}
-  >
-    <div className="cartbar__list__item__row">
-      <figure className="cartbar__image">
-        <img src={product.image} alt=""/>
-      </figure>
-      <div className="cartbar__list__info">
-        <p className="cartbar__list__name">{product.name}</p>
-      </div>
-      <div className="cartbar__list__pricing">
-        <div className="cartbar__list__current">{product.regular_price}</div>
-        <div className="cartbar__list__installments">3x R$ 66,63</div>
+const getTotalPrice = (products) => {
+  
+  if (_.isEmpty(products)) {
+    return 0;
+  }
+  
+  if (products.length === 1) {
+    return (products[0].currentPrice * products[0].qtd).toFixed(2);
+  }
+  
+  return products.reduce((acm, item) => (item.currentPrice * item.qtd) + (acm.currentPrice * acm.qtd)).toFixed(2);
+};
+
+const ProductItem = ({ product }) => {
+  const dispatch = useDispatch();
+  
+  const handleAddCart = () => {
+    dispatch(addCartItem({
+      ...product,
+      available: true,
+      size: product.size,
+      sku: product.sku
+    }));
+  }
+  
+  const handleRemoveCart = () => {
+    dispatch(removeCartItem({
+      ...product,
+      available: true,
+      size: product.size,
+      sku: product.sku
+    }));
+  }
+  
+  const handleRemoveAllCart = () => {
+    dispatch(removeAllCartItem({
+      ...product,
+      available: true,
+      size: product.size,
+      sku: product.sku
+    }));
+  }
+  
+  return (
+    <div className="cart__list__item">
+      <div className="cart__list__item__row">
+        <figure className="cart__image">
+          <img src={product.image} alt=""/>
+        </figure>
+        <button type="button" className="cart__remove" onClick={handleRemoveAllCart}>Remover item</button>
+        <div className="cart__list__info">
+          <p className="cart__list__name">{product.name}</p>
+          <p className="cart__list__size"><span>Tam.: {product.size}</span></p>
+          <div className="cart__list__quantity">
+            <button type="button" className="cart__icons" onClick={handleRemoveCart}><Minus size={16}/></button>
+            <div className="cart__list__input">{product.qtd}</div>
+            <button type="button" className="cart__icons" onClick={handleAddCart}><Plus size={16}/></button>
+          </div>
+        </div>
+        <div className="cart__list__pricing">
+          <div className="cart__list__current">{product.regular_price}</div>
+          {product.installments && <div className="cart__list__installments">{product.installments}</div>}
+        </div>
       </div>
     </div>
-  </Link>
-);
+  );
+};
 
 const SidebarCart = () => {
   const { cart } = useSelector(state => state);
+  
   return (
     <Sidebar
       icon={<ShoppingBag size={22} />}
       content={
-        <div className="cartbar">
-          <div className="cartbar__header">
-            <ArrowLeft className="cartbar__header__icon" />
-            <h2 className="cartbar__header__title">Meu carrinho</h2>
+        <div className="cart">
+          <div className="cart__header">
+            <ArrowLeft className="cart__header__icon" />
+            <h2 className="cart__header__title">Meu carrinho</h2>
           </div>
-          <div className="cartbar__list">
-            {/*{Object.values(cart.products).map((item, key) => (*/}
-            {/*  <ProductItem key={key} product={item}/>*/}
-            {/*))}}*/}
-            <ProductItem product={cart.products["4029_259_0_38"]}/>
-            <ProductItem product={cart.products["4029_259_0_38"]}/>
-            <ProductItem product={cart.products["4029_259_0_38"]}/>
-            <ProductItem product={cart.products["4029_259_0_38"]}/>
-            <ProductItem product={cart.products["4029_259_0_38"]}/>
+          <div className="cart__list">
+            {Object.values(cart.products).map((item, key) => (
+              <ProductItem key={key} product={item}/>
+            ))}
           </div>
-          <div className="cartbar__footer">
-            adslfdsak
+          <div className="cart__footer">
+            {getTotalPrice(Object.values(cart.products))}
           </div>
         </div>
       }

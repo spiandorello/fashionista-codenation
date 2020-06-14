@@ -2,7 +2,7 @@ import React, {useEffect, useState, useMemo} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
-import { addCart } from '../../actions/cart-actions';
+import { addCartItem } from '../../actions/cart-actions';
 
 import './_styles.scss';
 
@@ -24,7 +24,7 @@ const Product = () => {
       return;
     }
     
-    dispatch(addCart({
+    dispatch(addCartItem({
       ...product,
       ...size
     }));
