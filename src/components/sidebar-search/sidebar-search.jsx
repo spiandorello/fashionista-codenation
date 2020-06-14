@@ -9,7 +9,13 @@ import Sidebar from '../sidebar/sidebar';
 import './_styles.scss';
 
 const ProductItem = ({ product }) => (
-  <Link className="searchbar__list__item" to="/">
+  <Link
+    className="searchbar__list__item"
+    to={{
+      pathname: `/product/${_s.slugify(product.name)}`,
+      state: {...product}
+    }}
+  >
     <div className="searchbar__list__item__row">
       <figure className="searchbar__image">
         <img src={product.image} alt=""/>
@@ -32,7 +38,7 @@ const SidebarSearch = (props) => {
   
   useEffect(() => {
     setData(props.data.filter(item =>  item.name.toLowerCase().indexOf(search.toLowerCase()) !== -1));
-  }, [search]);
+  }, [search, props.data]);
   
   return (
     <Sidebar

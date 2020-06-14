@@ -13,13 +13,3 @@ export const getContentNameById = (id = '', list = []) => {
 
   return name;
 }
-
-export const slugify = (slug) =>
-{
-  return slug.toString().toLowerCase()
-    .replace(/\s+/g, '-')
-    .replace(/[^\w\-]+/g, '')
-    .replace(/\-\-+/g, '-')
-    .replace(/^-+/, '')
-    .replace(/-+$/, '');
-}

@@ -11,7 +11,7 @@ const Product = () => {
   
   useEffect(() => {
     setProduct({...location.state});
-  }, []);
+  }, [product, location]);
   
   return (
     <div className="product">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { ShoppingBag, Search } from 'react-feather';
+import { ShoppingBag } from 'react-feather';
 
 import './_styles.scss';
 import SidebarSearch from "../../components/sidebar-search/sidebar-search";
