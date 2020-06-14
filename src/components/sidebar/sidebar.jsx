@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './_styles.scss';
 
 const Sidebar = ({ icon, content }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   
   return (
     <>

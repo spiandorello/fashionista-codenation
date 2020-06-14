@@ -5,11 +5,11 @@ import { Switch, Route } from 'react-router-dom';
 import ProductsRoute from './Products';
 import ProductRoute from './Product';
 
-const Routes = () => {
+const Routes = ({products}) => {
   return (
     <Switch>
-      <Route exact path="/" component={ProductsRoute} />
-      <Route path="/product/:id" component={ProductRoute} />
+      <Route exact path="/" render={() => <ProductsRoute products={products} />} />
+      <Route path="/product/:name" component={ProductRoute} />
     </Switch>
   );
 };

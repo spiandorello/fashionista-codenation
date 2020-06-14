@@ -19,7 +19,7 @@ const Promotion  = ({ discount }) => {
 
 const ProductItem = ({ product }) => {
   const { image, name, regular_price, discount_percentage, actual_price, on_sale } = product;
-  console.log(actual_price)
+  
   return (
     <div className="products__item">
       <Link

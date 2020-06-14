@@ -28,6 +28,20 @@
   &__price {
     font-size: 1.2rem;
     font-weight: bold;
+
+    &--old {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-right: 1rem;
+      color: #a7a7a7;
+      text-decoration: line-through;
+    }
+
+    &--installments {
+      font-size: 1rem;
+      margin-left: 0.9rem;
+      color: #a7a7a7;
+    }
   }
 
   &__sizes {
@@ -49,8 +63,9 @@
       width: 38px;
       height: 38px;
       font-weight: bold;
+      margin-right: 1rem;
 
-      &:hover {
+      &:hover, &:focus {
         color: #fefefe;
         background-color: #000;
       }
