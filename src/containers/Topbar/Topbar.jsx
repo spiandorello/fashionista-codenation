@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { ShoppingBag } from 'react-feather';
+
+import SidebarSearch from "../../components/sidebar-search/sidebar-search";
+import SidebarCart from "../../components/sidebar-cart/sidebar-cart";
 
 import './_styles.scss';
-import SidebarSearch from "../../components/sidebar-search/sidebar-search";
 
 const TopBar = ({ products }) => {
   return (
@@ -16,9 +17,7 @@ const TopBar = ({ products }) => {
         </Link>
         <div className="cell topbar__icons">
           <SidebarSearch data={products} />
-          <button className="topbar__icons--cart" onClick={() => {}}>
-            <ShoppingBag size={22} />
-          </button>
+          <SidebarCart />
         </div>
       </div>
     </header>

@@ -65,7 +65,12 @@
       font-weight: bold;
       margin-right: 1rem;
 
-      &:hover, &:focus {
+      &--is-selected {
+        color: #fefefe;
+        background-color: #000;
+      }
+
+      &:hover {
         color: #fefefe;
         background-color: #000;
       }
@@ -74,12 +79,17 @@
 
   &__actions {
     &__button {
+      cursor: pointer;
       padding: 1rem;
       border-radius: 6px;
       background-color: #000;
       color: #fefefe;
       width: 60%;
       box-shadow: 0 0.2rem 2rem 0 rgba(0,0,0,.5);
+
+      &:hover {
+        opacity: 0.9;
+      }
     }
   }
 }

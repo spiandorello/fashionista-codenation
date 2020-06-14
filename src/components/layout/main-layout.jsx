@@ -25,7 +25,7 @@ const MainLayout = () => {
   }
   
   return (
-    <div>
+    <div className="main-layout">
       <TopBar products={products} />
       <Routes products={products} />
     </div>

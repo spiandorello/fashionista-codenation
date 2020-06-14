@@ -1,17 +1,34 @@
-import React, {useEffect, useState} from 'react';
-
+import React, {useEffect, useState, useMemo} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+
+import { addCart } from '../../actions/cart-actions';
 
 import './_styles.scss';
 
 const Product = () => {
   let location = useLocation();
+  const dispatch = useDispatch();
   
   const [product, setProduct] = useState({});
+  const [size, setSize] = useState({});
   
   useEffect(() => {
     setProduct({...location.state});
   }, []);
+  
+  const handleAddCart = () => {
+    
+    if (Object.keys(size).length === 0) {
+      console.log('error cart empty');
+      return;
+    }
+    
+    dispatch(addCart({
+      ...product,
+      ...size
+    }));
+  };
   
   return (
     <>
@@ -47,8 +64,13 @@ const Product = () => {
                   if (item.available) {
                     return <button
                       key={key}
-                      className="product__sizes__button"
-                      onClick={() => console.log(item.sku)}
+                      className={`product__sizes__button ${item.sku === size.sku ? 'product__sizes__button--is-selected' : ''}`}
+                      onClick={() => {
+                        setSize({
+                          sku: item.sku,
+                          size: item.size
+                        });
+                      }}
                     >
                       {item.size}
                     </button>
@@ -57,7 +79,7 @@ const Product = () => {
               </div>
             </div>
             <div className="product__actions">
-              <button className="product__actions__button">
+              <button onClick={() => handleAddCart()} className="product__actions__button">
                 Adicionar a sacola
               </button>
             </div>

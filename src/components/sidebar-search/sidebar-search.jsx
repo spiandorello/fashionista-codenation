@@ -22,11 +22,10 @@ const ProductItem = ({ product }) => (
       </figure>
       <div className="searchbar__list__info">
         <p className="searchbar__list__name">{product.name}</p>
-        {/*<p className="searchbar__list__size">asdf</p>*/}
       </div>
       <div className="searchbar__list__pricing">
         <div className="searchbar__list__current">{product.regular_price}</div>
-        {/*<div className="searchbar__list__installments">3x R$ 66,63</div>*/}
+        {/*<div className="searchbar__list__installments">{product.installments}</div>*/}
       </div>
     </div>
   </Link>
